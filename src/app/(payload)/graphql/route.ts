@@ -1,3 +1,4 @@
-import { GRAPHQL, POST, OPTIONS } from '@payloadcms/next/routes'
+import { GRAPHQL_PLAYGROUND_GET, GRAPHQL_POST } from '@payloadcms/next/routes'
 
-export { GRAPHQL, POST, OPTIONS }
+export const GET = GRAPHQL_PLAYGROUND_GET
+export const POST = GRAPHQL_POST
