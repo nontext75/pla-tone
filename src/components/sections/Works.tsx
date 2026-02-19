@@ -16,7 +16,7 @@ export function Works() {
                 <div className="flex justify-between items-end mb-20">
                     <div>
                         <span className="text-[#ff3b30] text-xs font-bold tracking-[0.4em] uppercase mb-4 block">Portfolio</span>
-                        <h3 className="text-5xl md:text-7xl font-black tracking-tight text-[#0a0a12]">WORKS</h3>
+                        <h3 className="text-5xl md:text-7xl font-black tracking-tight text-[#0a0a12]">PROJECTS</h3>
                     </div>
                     <a href="#contact" className="hidden md:block text-xs font-bold tracking-[0.3em] uppercase border-b border-[#0a0a12] pb-1 hover:opacity-50 transition-opacity">
                         View All Projects
