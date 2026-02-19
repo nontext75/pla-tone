@@ -9,7 +9,7 @@ export const siteConfig = {
     },
     navigation: [
         { name: 'INVENTORY', href: '/collection' },
-        { name: 'PROJECTS', href: '/projects' },
+        { name: 'WORKS', href: '/projects' },
         { name: 'STUDIO', href: '/about' },
         { name: 'CONTACT', href: '/contact' }
     ]
