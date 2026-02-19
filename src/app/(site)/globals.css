@@ -41,11 +41,11 @@
 
   .text-meta,
   .text-metadata {
-    @apply text-[9px] font-black tracking-[0.4em] uppercase opacity-60;
+    @apply text-[11px] font-black tracking-[0.2em] uppercase opacity-80;
   }
 
   .text-technical {
-    @apply font-mono text-[10px] tracking-widest uppercase;
+    @apply font-mono text-[12px] tracking-widest uppercase opacity-90;
   }
 
   .text-outline {

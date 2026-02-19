@@ -19,6 +19,15 @@ export const Projects: CollectionConfig = {
             index: true,
         },
         {
+            type: 'ui',
+            name: 'bulkUpload',
+            admin: {
+                components: {
+                    Field: '/components/payload/BulkUpload',
+                },
+            },
+        },
+        {
             name: 'gallery',
             type: 'array',
             fields: [

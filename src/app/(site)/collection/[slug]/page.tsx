@@ -1,4 +1,4 @@
-import config from '../../../payload.config'
+import config from '@/payload.config'
 import { getPayload } from 'payload'
 import { notFound } from 'next/navigation'
 import ProjectDetails from './ProjectDetails'

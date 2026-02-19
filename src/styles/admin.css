@@ -1,0 +1,46 @@
+/* Payload CMS Admin Custom CSS */
+
+/* Increase base font size */
+:root {
+  --font-body: 'Inter', sans-serif;
+}
+
+body {
+  font-size: 16px !important;
+}
+
+/* Improve Input Fields Readability */
+.field-type input[type="text"],
+.field-type input[type="email"],
+.field-type input[type="password"],
+.field-type select,
+.field-type textarea {
+  font-size: 16px !important;
+  color: #F5F5F0 !important; /* Light text for dark mode */
+  background-color: #1A1A1A !important;
+  border-color: #333 !important;
+}
+
+/* Improve Labels */
+.field-label {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #cccccc !important;
+  margin-bottom: 8px !important;
+}
+
+/* Button Accessibility */
+.btn {
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* Sidebar Navigation */
+.nav__link {
+  font-size: 15px !important;
+}
+
+/* Dashboard Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff !important;
+}

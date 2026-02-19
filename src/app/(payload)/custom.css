@@ -1,0 +1,122 @@
+/* Carjoy Style Dark Theme Override */
+:root {
+    /* Base Colors - Deep Dark Blue/Black */
+    --theme-bg-html: #0f1115;
+    /* Main Background */
+    --theme-bg-page: #0f1115;
+    --theme-elevation-0: #0f1115;
+    --theme-elevation-50: #15171c;
+    /* Sidebar / Cards */
+    --theme-elevation-100: #1a1d23;
+    --theme-elevation-150: #20232a;
+    --theme-elevation-200: #252830;
+    --theme-elevation-250: #2b2e36;
+    --theme-elevation-300: #30343d;
+    --theme-elevation-350: #363a44;
+    --theme-elevation-400: #3c404b;
+    --theme-elevation-450: #424652;
+    --theme-elevation-500: #484c59;
+    --theme-elevation-800: #ffffff;
+    /* Text inverse */
+
+    /* Text Colors */
+    --theme-text-primary: #ffffff;
+    --theme-text-secondary: #9ca3af;
+    /* Muted text */
+    --theme-text-tertiary: #6b7280;
+
+    /* Brand Colors - Electric Blue & Red Accents */
+    --theme-success-500: #10b981;
+    /* Green */
+    --theme-error-500: #ef4444;
+    /* Red */
+    --theme-warning-500: #f59e0b;
+    /* Orange */
+    --theme-info-500: #3b82f6;
+    /* Blue */
+
+    /* Primary Action Color (Button) */
+    --theme-primary-500: #3b82f6;
+    /* Bright Blue */
+    --theme-primary-600: #2563eb;
+    --theme-primary-700: #1d4ed8;
+
+    /* Border Radius - Soft modern feel */
+    --theme-radius-sm: 6px;
+    --theme-radius-md: 10px;
+    --theme-radius-lg: 14px;
+}
+
+/* Global Overrides for Payload UI */
+body {
+    background-color: var(--theme-bg-html) !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Sidebar styling */
+aside.nav {
+    background-color: var(--theme-elevation-50) !important;
+    border-right: 1px solid #1f2229 !important;
+}
+
+/* Card Styling */
+.card,
+.dist-card {
+    background-color: var(--theme-elevation-50) !important;
+    border: 1px solid #1f2229 !important;
+    border-radius: var(--theme-radius-lg) !important;
+}
+
+/* Input Fields */
+input,
+textarea,
+select,
+.react-select__control {
+    background-color: #1a1d23 !important;
+    border: 1px solid #2d313a !important;
+    color: white !important;
+    border-radius: var(--theme-radius-md) !important;
+}
+
+/* Buttons - Primary */
+.btn--style-primary {
+    background-color: var(--theme-primary-500) !important;
+    border-radius: var(--theme-radius-md) !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn--style-primary:hover {
+    background-color: var(--theme-primary-600) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Headers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+/* Force Nav Groups to stay open */
+.nav-group__content {
+    display: block !important;
+    height: auto !important;
+    opacity: 1 !important;
+}
+
+.nav-group__toggle {
+    cursor: default !important;
+    pointer-events: none !important;
+    /* Disable clicking */
+}
+
+.nav-group__indicator {
+    display: none !important;
+    /* Hide chevron */
+}
