@@ -1,46 +1,97 @@
-/* Payload CMS Admin Custom CSS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* Increase base font size */
 :root {
+  /* Galaxy Theme Palette */
+  --galaxy-bg: #020617;        /* Main Background - Slate 950/Midnight */
+  --galaxy-surface: #1e293b;   /* Cards/Sidebar - Slate 800 */
+  --galaxy-surface-light: #334155; /* Hover/Active - Slate 700 */
+  --galaxy-border: #1e293b;
+  --galaxy-text-main: #f8fafc; /* Slate 50 */
+  --galaxy-text-muted: #94a3b8; /* Slate 400 */
+  --galaxy-primary: #3b82f6;   /* Blue 500 */
+  --galaxy-accent: #8b5cf6;    /* Violet 500 */
+  --galaxy-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  
+  /* Payload Variables Override */
   --font-body: 'Inter', sans-serif;
+  --font-heading: 'Inter', sans-serif;
+  
+  --theme-bg: var(--galaxy-bg);
+  --theme-elevation-0: var(--galaxy-surface); /* Cards / Sidebar */
+  --theme-elevation-50: var(--galaxy-surface-light);
+  --theme-elevation-100: var(--galaxy-surface-light);
+  --theme-elevation-150: var(--galaxy-surface-light);
+  --theme-elevation-200: var(--galaxy-surface-light);
+  
+  --theme-text: var(--galaxy-text-main);
+  
+  /* Sidebar Specifics */
+  --theme-elevation-0: #0f172a; /* Slightly darker for sidebar if possible, but payload uses elevation-0 mostly */
 }
 
+/* Global Reset/Base */
 body {
-  font-size: 16px !important;
+  background-color: var(--galaxy-bg) !important;
+  color: var(--galaxy-text-main) !important;
 }
 
-/* Improve Input Fields Readability */
-.field-type input[type="text"],
-.field-type input[type="email"],
-.field-type input[type="password"],
-.field-type select,
-.field-type textarea {
-  font-size: 16px !important;
-  color: #F5F5F0 !important; /* Light text for dark mode */
-  background-color: #1A1A1A !important;
-  border-color: #333 !important;
+/* Sidebar Styling */
+nav {
+  background-color: #0f172a !important; /* Force darker sidebar */
+  border-right: 1px solid var(--galaxy-border) !important;
 }
 
-/* Improve Labels */
-.field-label {
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  color: #cccccc !important;
-  margin-bottom: 8px !important;
+/* Card / Dashboard Groups */
+.dashboard__group, 
+.collection-list .list-controls,
+.collection-list table {
+  background-color: var(--galaxy-surface) !important;
+  border: 1px solid var(--galaxy-border) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  overflow: hidden;
 }
 
-/* Button Accessibility */
-.btn {
-  font-weight: 600 !important;
-  letter-spacing: 0.05em !important;
-}
-
-/* Sidebar Navigation */
-.nav__link {
-  font-size: 15px !important;
-}
-
-/* Dashboard Headings */
+/* Text Headers */
 h1, h2, h3, h4, h5, h6 {
-  color: #ffffff !important;
+  color: var(--galaxy-text-main) !important;
+  letter-spacing: -0.02em;
+}
+
+/* Buttons */
+button.btn--style-primary,
+a.btn--style-primary,
+.btn.btn--style-primary {
+  background: var(--galaxy-gradient) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 600 !important;
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.3); /* Glow effect */
+  transition: all 0.2s ease;
+}
+
+button.btn--style-primary:hover,
+a.btn--style-primary:hover {
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Inputs */
+input, select, textarea {
+  background-color: #0f172a !important;
+  border-color: var(--galaxy-surface-light) !important;
+  color: white !important;
+}
+
+/* Tables */
+table th {
+  color: var(--galaxy-text-muted) !important;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+table td {
+  color: var(--galaxy-text-main) !important;
+  border-bottom: 1px solid var(--galaxy-border) !important;
 }

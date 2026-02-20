@@ -6,8 +6,12 @@ import { fileURLToPath } from 'url'
 
 import { Projects } from './collections/Projects'
 import { Media } from './collections/Media'
+import './styles/admin.css' // Import Galaxy Theme
 import { Inquiries } from './collections/Inquiries'
-import { Hero } from './collections/Inquiries'
+import { Hero } from './globals/Hero'
+import { Logo } from './components/Logo'
+import { Icon } from './components/Icon'
+import { ProjectIcon, MediaIcon, InquiryIcon, HeroIcon, UserIcon } from './components/NavIcons'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -17,6 +21,17 @@ export default buildConfig({
         user: 'users',
         meta: {
             titleSuffix: '- PLA-TONE Admin',
+            icons: [{
+                rel: 'icon',
+                type: 'image/svg+xml',
+                url: '/favicon.svg',
+            }],
+        },
+        components: {
+            graphics: {
+                Logo: Logo,
+                Icon: Icon,
+            },
         },
     },
     serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3004',
@@ -27,13 +42,40 @@ export default buildConfig({
             slug: 'users',
             auth: true,
             fields: [],
+            admin: {
+                group: 'System',
+            },
         },
-        Projects,
-        Media,
-        Inquiries,
+        {
+            ...Projects,
+            admin: {
+                ...Projects.admin,
+                group: 'Content',
+            },
+        },
+        {
+            ...Media,
+            admin: {
+                ...Media.admin,
+                group: 'Content',
+            },
+        },
+        {
+            ...Inquiries,
+            admin: {
+                ...Inquiries.admin,
+                group: 'Communication',
+            },
+        },
     ],
     globals: [
-        Hero,
+        {
+            ...Hero,
+            admin: {
+                ...Hero.admin,
+                group: 'Content',
+            },
+        },
     ],
     editor: lexicalEditor({}),
     secret: process.env.PAYLOAD_SECRET || '',
