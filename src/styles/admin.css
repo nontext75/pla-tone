@@ -1,48 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-:root {
-  /* Galaxy Theme Palette */
-  --galaxy-bg: #020617;        /* Main Background - Slate 950/Midnight */
-  --galaxy-surface: #1e293b;   /* Cards/Sidebar - Slate 800 */
-  --galaxy-surface-light: #334155; /* Hover/Active - Slate 700 */
+/* Payload Admin Specific Styling - Scoped to avoid affecting frontend */
+[data-theme="dark"],
+.payload-admin {
+  --galaxy-bg: #020617;
+  --galaxy-surface: #1e293b;
+  --galaxy-surface-light: #334155;
   --galaxy-border: #1e293b;
-  --galaxy-text-main: #f8fafc; /* Slate 50 */
-  --galaxy-text-muted: #94a3b8; /* Slate 400 */
-  --galaxy-primary: #3b82f6;   /* Blue 500 */
-  --galaxy-accent: #8b5cf6;    /* Violet 500 */
-  --galaxy-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-  
-  /* Payload Variables Override */
-  --font-body: 'Inter', sans-serif;
-  --font-heading: 'Inter', sans-serif;
-  
-  --theme-bg: var(--galaxy-bg);
-  --theme-elevation-0: var(--galaxy-surface); /* Cards / Sidebar */
-  --theme-elevation-50: var(--galaxy-surface-light);
-  --theme-elevation-100: var(--galaxy-surface-light);
-  --theme-elevation-150: var(--galaxy-surface-light);
-  --theme-elevation-200: var(--galaxy-surface-light);
-  
-  --theme-text: var(--galaxy-text-main);
-  
-  /* Sidebar Specifics */
-  --theme-elevation-0: #0f172a; /* Slightly darker for sidebar if possible, but payload uses elevation-0 mostly */
+  --galaxy-text-main: #f8fafc;
+  --galaxy-text-muted: #94a3b8;
+  --galaxy-primary: #3b82f6;
+  --galaxy-accent: #8b5cf6;
 }
 
-/* Global Reset/Base */
-body {
+/* Base resets only for admin */
+.payload-admin body {
   background-color: var(--galaxy-bg) !important;
   color: var(--galaxy-text-main) !important;
 }
 
 /* Sidebar Styling */
 nav {
-  background-color: #0f172a !important; /* Force darker sidebar */
+  background-color: #0f172a !important;
+  /* Force darker sidebar */
   border-right: 1px solid var(--galaxy-border) !important;
 }
 
 /* Card / Dashboard Groups */
-.dashboard__group, 
+.dashboard__group,
 .collection-list .list-controls,
 .collection-list table {
   background-color: var(--galaxy-surface) !important;
@@ -53,7 +38,12 @@ nav {
 }
 
 /* Text Headers */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--galaxy-text-main) !important;
   letter-spacing: -0.02em;
 }
@@ -66,7 +56,8 @@ a.btn--style-primary,
   border: none !important;
   color: white !important;
   font-weight: 600 !important;
-  box-shadow: 0 0 15px rgba(139, 92, 246, 0.3); /* Glow effect */
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+  /* Glow effect */
   transition: all 0.2s ease;
 }
 
@@ -77,7 +68,9 @@ a.btn--style-primary:hover {
 }
 
 /* Inputs */
-input, select, textarea {
+input,
+select,
+textarea {
   background-color: #0f172a !important;
   border-color: var(--galaxy-surface-light) !important;
   color: white !important;
