@@ -17,7 +17,9 @@ export default function AboutPage() {
                             Crafting <br /> Legends
                         </h1>
                         <p className="text-xl md:text-2xl text-brand-secondary/60 leading-relaxed font-sans max-w-2xl">
-                            Pla.tone Studio is a Tokyo-based creative residency dedicated to the absolute pinnacle of mecha modeling. We believe every build is a legacy in plastic.
+                            Pla.tone Studio is a Tokyo-based creative residency <br className="hidden md:block" />
+                            dedicated to the absolute pinnacle of mecha modeling. <br className="hidden md:block" />
+                            We believe every build is a legacy in plastic.
                         </p>
                     </motion.div>
                 </div>

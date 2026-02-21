@@ -10,7 +10,7 @@ import { CartDrawer } from "@/components/layout/CartDrawer";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "GP. | Studio",
+  title: "PLA.TONE STUDIO",
   description: "Bespoke Gundam Plamodel Artistry",
 };
 

@@ -4,11 +4,11 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 const inventory = [
-    { id: 'rx-93', name: 'RX-93 Nu Gundam', series: 'MG Ver.Ka', price: 'COMPLETED', image: '/images/hero_temp.jpg' },
-    { id: 'sazabi', name: 'MSN-04 Sazabi', series: 'MG Ver.Ka', price: 'IN PROGRESS', image: '/images/project_mars.jpg' },
-    { id: 'unicorn', name: 'RX-0 Unicorn', series: 'PG Unleashed', price: 'ARCHIVED', image: '/images/project_theo.png' },
-    { id: 'zaku', name: 'MS-06S Zaku II', series: 'custom', price: 'COMPLETED', image: '/images/project_zaku.jpg' },
-    { id: 'gp01', name: 'GP-01 Custom', series: 'RG', price: 'AVAILABLE', image: '/images/project_gp_custom.png' },
+    { id: 'rx-93', name: 'RX-93 Nu Gundam', series: 'MG Ver.Ka', artist: 'NONTEXT', image: '/images/hero_temp.jpg' },
+    { id: 'sazabi', name: 'MSN-04 Sazabi', series: 'MG Ver.Ka', artist: 'NONTEXT', image: '/images/project_mars.jpg' },
+    { id: 'unicorn', name: 'RX-0 Unicorn', series: 'PG Unleashed', artist: 'NONTEXT', image: '/images/project_theo.png' },
+    { id: 'zaku', name: 'MS-06S Zaku II', series: 'custom', artist: 'NONTEXT', image: '/images/project_zaku.jpg' },
+    { id: 'gp01', name: 'GP-01 Custom', series: 'RG', artist: 'NONTEXT', image: '/images/project_gp_custom.png' },
 ];
 
 export default function CollectionPage() {
@@ -36,20 +36,32 @@ export default function CollectionPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.1 }}
-                        className="col-span-12 md:col-span-6 lg:col-span-4 group border border-white/5 bg-white/[0.02] p-4 transition-all hover:border-[#7d5fff]/30"
+                        className="col-span-12 md:col-span-6 lg:col-span-4 group transition-all"
                     >
-                        <div className="aspect-square overflow-hidden mb-6 bg-black">
-                            <img src={item.image} alt={item.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                        <div className="aspect-square overflow-hidden mb-8 bg-black border border-white/5 group-hover:border-[#7d5fff]/30 transition-colors">
+                            <img
+                                src={item.image}
+                                alt={item.name}
+                                className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                            />
                         </div>
-                        <div className="flex justify-between items-start mb-4">
+                        <div className="flex justify-between items-start mb-6 px-1">
                             <div>
-                                <span className="text-[10px] font-black opacity-40 block mb-1 uppercase tracking-widest">{item.series}</span>
-                                <h3 className="font-sans font-black text-xl text-white uppercase tracking-tighter">{item.name}</h3>
+                                <span className="text-[11px] font-black text-brand-accent block mb-2 uppercase tracking-widest">{item.series}</span>
+                                <h3 className="font-sans font-black text-2xl text-white uppercase tracking-tighter group-hover:text-brand-accent transition-colors">
+                                    {item.name}
+                                </h3>
+                                <div className="mt-3 pt-3 border-t border-white/5 inline-block">
+                                    <span className="text-[9px] font-mono text-brand-secondary/30 block tracking-[0.2em]">ARTIST / {item.artist}</span>
+                                </div>
                             </div>
-                            <span className="text-[9px] font-black border border-white/20 px-3 py-1 text-brand-accent">{item.price}</span>
                         </div>
-                        <Link href={`/collection/${item.id}`} className="block w-full text-center py-4 border border-white/10 text-[10px] font-black uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all">
-                            View Specs
+                        <Link href={`/collection/${item.id}`} className="group/btn relative flex items-center justify-center w-full py-5 border border-white/10 text-[10px] font-black uppercase tracking-[0.4em] transition-all overflow-hidden hover:border-white">
+                            <span className="relative z-10">Explore Specs</span>
+                            <div className="absolute inset-x-0 bottom-0 h-0 group-hover/btn:h-full bg-white transition-all duration-300 -z-0" />
+                            <span className="absolute inset-0 flex items-center justify-center z-10 opacity-0 group-hover/btn:opacity-100 text-black transition-opacity duration-300">
+                                Explore Specs
+                            </span>
                         </Link>
                     </motion.div>
                 ))}

@@ -9,6 +9,7 @@ const projects = [
         title: 'RX-93 Nu Gundam',
         category: 'Ver. Ka',
         year: '2024',
+        artist: 'NONTEXT',
         image: '/images/project_gp_custom.png'
     },
     {
@@ -16,6 +17,7 @@ const projects = [
         title: 'MSN-04 Sazabi',
         category: 'Ver. Ka',
         year: '2023',
+        artist: 'NONTEXT',
         image: '/images/project_mars.jpg'
     },
     {
@@ -23,6 +25,7 @@ const projects = [
         title: 'RX-0 Unicorn',
         category: 'PG Unleashed',
         year: '2023',
+        artist: 'NONTEXT',
         image: '/images/project_theo.png'
     }
 ];
@@ -82,12 +85,15 @@ export default function VerticalGallery() {
                                 <div className="space-y-6">
                                     <div>
                                         <div className="flex items-center gap-3 mb-2">
-                                            <span className="h-[1px] w-6 bg-brand-accent"></span>
-                                            <span className="text-metadata text-brand-accent">{project.category}</span>
+                                            <span className="h-[2px] w-8 bg-brand-accent"></span>
+                                            <span className="text-xs font-black text-white tracking-[0.2em] uppercase">{project.category}</span>
                                         </div>
                                         <h3 className="font-sans font-bold text-4xl md:text-5xl text-white tracking-tight group-hover:text-brand-accent transition-colors">
                                             {project.title}
                                         </h3>
+                                        <span className="text-[9px] font-mono text-brand-accent/60 mt-1 block uppercase tracking-[0.3em]">
+                                            BY {project.artist}
+                                        </span>
                                     </div>
 
                                     <div className="grid grid-cols-2 gap-4 pb-8 border-b border-white/10">
