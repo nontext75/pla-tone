@@ -31,14 +31,17 @@ export default function VerticalGallery() {
     return (
         <section className="bg-brand-primary py-32 text-brand-secondary">
             <div className="architectural-grid mb-24">
-                <div className="col-span-12 flex items-end justify-between">
-                    <h2 className="font-sans font-black text-white text-[8vw] leading-[0.85] tracking-tighter uppercase">Selected <br /> Works</h2>
-                    <span className="text-metadata text-brand-secondary/60 mb-4 hidden md:block">Scroll to Explore</span>
+                <div className="col-span-12 flex items-end justify-between border-b border-brand-secondary/10 pb-8">
+                    <div className="flex flex-col gap-2">
+                        <span className="text-technical text-brand-accent">Archived Series</span>
+                        <h2 className="font-sans font-black text-white text-[8vw] leading-[0.85] tracking-tighter uppercase">Latest</h2>
+                    </div>
+                    <span className="text-metadata text-brand-secondary/60 mb-4 hidden md:block">Scroll to Explore / 001-003</span>
                 </div>
             </div>
 
             <div className="architectural-grid">
-                <div className="col-span-12 space-y-32">
+                <div className="col-span-12 space-y-48">
                     {projects.map((project, i) => (
                         <motion.div
                             key={project.id}
@@ -46,29 +49,66 @@ export default function VerticalGallery() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-10%" }}
                             transition={{ duration: 0.8 }}
-                            className="group grid grid-cols-12 gap-8 md:gap-12 cursor-pointer"
+                            className="group grid grid-cols-12 gap-8 md:gap-12 cursor-pointer relative"
                         >
-                            {/* Image */}
-                            <div className="col-span-12 md:col-span-8 relative overflow-hidden aspect-[16/9] md:aspect-[21/9]">
-                                <img
+                            {/* Number Index */}
+                            <div className="absolute -left-4 md:-left-8 top-0 hidden md:block">
+                                <span className="text-monumental text-white/5 font-black leading-none select-none">
+                                    0{i + 1}
+                                </span>
+                            </div>
+
+                            {/* Image Container */}
+                            <div className="col-span-12 md:col-span-8 relative overflow-hidden aspect-[16/9] md:aspect-[21/9] border border-white/5">
+                                <motion.img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                                    whileHover={{ scale: 1.05 }}
+                                    transition={{ duration: 0.7 }}
+                                    className="w-full h-full object-cover grayscale opacity-80 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100"
                                 />
-                                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                {/* Image Overlay Info */}
+                                <div className="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                                    <span className="text-technical text-white border border-white/20 px-3 py-1 backdrop-blur-sm">
+                                        Specs: Custom Painted / High-Detail
+                                    </span>
+                                </div>
                             </div>
 
                             {/* Info */}
-                            <div className="col-span-12 md:col-span-4 flex flex-col justify-between py-2 border-t border-brand-secondary/20 md:border-t-0">
-                                <div>
-                                    <span className="text-metadata text-brand-accent mb-2 block">{project.category}</span>
-                                    <h3 className="font-sans font-bold text-3xl md:text-4xl text-white mb-4">{project.title}</h3>
-                                    <span className="text-[10px] font-mono text-brand-secondary/60 block">{project.year} / PAINTED BUILD</span>
+                            <div className="col-span-12 md:col-span-4 flex flex-col justify-between py-4">
+                                <div className="space-y-6">
+                                    <div>
+                                        <div className="flex items-center gap-3 mb-2">
+                                            <span className="h-[1px] w-6 bg-brand-accent"></span>
+                                            <span className="text-metadata text-brand-accent">{project.category}</span>
+                                        </div>
+                                        <h3 className="font-sans font-bold text-4xl md:text-5xl text-white tracking-tight group-hover:text-brand-accent transition-colors">
+                                            {project.title}
+                                        </h3>
+                                    </div>
+
+                                    <div className="grid grid-cols-2 gap-4 pb-8 border-b border-white/10">
+                                        <div>
+                                            <span className="text-[9px] uppercase tracking-widest text-brand-secondary/40 block mb-1">Scale</span>
+                                            <span className="text-xs font-mono text-brand-secondary/80">1/100 MASTER GRADE</span>
+                                        </div>
+                                        <div>
+                                            <span className="text-[9px] uppercase tracking-widest text-brand-secondary/40 block mb-1">Year</span>
+                                            <span className="text-xs font-mono text-brand-secondary/80">{project.year}</span>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div className="mt-8 md:mt-0">
-                                    <Link href={`/project/${project.id}`} className="inline-block text-[10px] font-black uppercase tracking-[0.3em] border border-brand-secondary/20 px-6 py-3 hover:bg-white hover:text-black transition-all">
-                                        View Project
+                                <div className="mt-8">
+                                    <Link href={`/project/${project.id}`} className="group/btn relative inline-flex items-center gap-6 overflow-hidden border border-brand-secondary/20 px-8 py-4 text-[10px] font-black uppercase tracking-[0.3em] text-brand-secondary transition-all hover:border-brand-accent">
+                                        <span className="relative z-10 transition-colors group-hover/btn:text-white">View Case Study</span>
+                                        <div className="absolute inset-0 -z-0 bg-brand-accent translate-x-[-100%] group-hover/btn:translate-x-0 transition-transform duration-300" />
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative z-10 transition-transform group-hover/btn:translate-x-2">
+                                            <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
                                     </Link>
                                 </div>
                             </div>

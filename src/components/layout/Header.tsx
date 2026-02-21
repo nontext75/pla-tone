@@ -18,8 +18,8 @@ export default function Header() {
     };
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-[100] px-6 py-6 md:px-12 text-white bg-black/50 backdrop-blur-md">
-            <div className="flex items-start justify-between border-b border-white/20 pb-6">
+        <header className="fixed top-0 left-0 right-0 z-[100] text-white bg-black/30 backdrop-blur-md border-b border-white/20">
+            <div className="flex items-center justify-between px-6 py-6 md:px-12">
                 {/* Logo - Fixed Left */}
                 <Link href="/" className="group flex flex-col items-start gap-1">
                     <div className="font-sans font-black text-2xl leading-none tracking-tighter uppercase text-brand-accent">
