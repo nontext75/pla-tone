@@ -6,7 +6,6 @@ import { fileURLToPath } from 'url'
 
 import { Projects } from './collections/Projects'
 import { Media } from './collections/Media'
-import './styles/admin.css' // Import Galaxy Theme
 import { Inquiries } from './collections/Inquiries'
 import { Hero } from './globals/Hero'
 import { Logo } from './components/Logo'

@@ -9,9 +9,9 @@ export default function Hero() {
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src="/images/project_gp_custom.png" // Updated to authentic file
+                    src="/images/project_gp_custom.png"
                     alt="Gundam Studio Background"
-                    className="h-full w-full object-cover opacity-60 grayscale mix-blend-overlay"
+                    className="h-full w-full object-cover opacity-40"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80" />
             </div>
