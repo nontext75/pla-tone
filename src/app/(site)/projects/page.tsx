@@ -73,8 +73,12 @@ export default function ProjectsPage() {
                                 <span className="text-[10px] font-black text-[#7d5fff] block mb-2 tracking-[0.5em]">{project.category}</span>
                                 <h3 className="text-4xl lg:text-6xl font-sans font-black text-white uppercase tracking-tighter">{project.title}</h3>
                             </div>
-                            <Link href={`/project/${project.id}`} className="px-12 py-4 border border-white/20 text-[10px] font-black uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all">
-                                Analysis
+                            <Link href={`/collection/${project.id}`} className="group/btn relative flex items-center justify-center gap-3 px-12 h-[60px] border border-white/20 text-white text-[10px] font-black uppercase tracking-[0.4em] overflow-hidden transition-all hover:border-brand-accent">
+                                <span className="relative z-10 transition-colors group-hover/btn:text-white">More Details</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="relative z-10 transition-transform group-hover/btn:translate-x-1 group-hover/btn:text-white">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                                <div className="absolute inset-x-0 bottom-0 h-0 bg-brand-accent transition-all duration-300 group-hover/btn:h-full -z-0" />
                             </Link>
                         </div>
                     </motion.div>

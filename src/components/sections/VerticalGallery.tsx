@@ -109,12 +109,12 @@ export default function VerticalGallery() {
                                 </div>
 
                                 <div className="mt-8">
-                                    <Link href={`/project/${project.id}`} className="group/btn relative flex items-center justify-center overflow-hidden border border-brand-secondary/20 px-8 py-4 text-[10px] font-black uppercase tracking-[0.3em] text-brand-secondary transition-all hover:border-brand-accent">
+                                    <Link href={`/collection/${project.id}`} className="group/btn relative flex items-center justify-center gap-3 overflow-hidden border border-brand-secondary/20 px-8 h-[60px] text-[10px] font-black uppercase tracking-[0.4em] text-brand-secondary transition-all hover:border-brand-accent">
                                         <span className="relative z-10 transition-colors group-hover/btn:text-white">More Details</span>
-                                        <div className="absolute inset-x-0 bottom-0 h-0 bg-brand-accent transition-all duration-300 group-hover/btn:h-full -z-0" />
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative z-10 ml-2 transition-transform group-hover/btn:translate-x-2 group-hover/btn:text-white">
-                                            <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="relative z-10 transition-transform group-hover/btn:translate-x-1 group-hover/btn:text-white">
+                                            <path d="M5 12h14M12 5l7 7-7 7" />
                                         </svg>
+                                        <div className="absolute inset-x-0 bottom-0 h-0 bg-brand-accent transition-all duration-300 group-hover/btn:h-full -z-0" />
                                     </Link>
                                 </div>
                             </div>

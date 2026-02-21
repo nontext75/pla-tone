@@ -52,6 +52,38 @@ const staticProjects: Record<string, any> = {
             { image: { url: '/images/project_theo.png', alt: 'Unicorn Gundam' } },
         ],
         description: 'The ultimate PG Unleashed Unicorn, featuring full LED integration and high-detail frame painting.'
+    },
+    'zaku': {
+        title: 'MS-06S Zaku II',
+        slug: 'zaku',
+        specs: {
+            series: 'Custom Build',
+            scale: '1/100',
+            buildTime: '90 Hours',
+            paintFinish: 'Weathered Red',
+        },
+        price: 650,
+        status: 'out_of_stock',
+        gallery: [
+            { image: { url: '/images/project_zaku.jpg', alt: 'Zaku II' } },
+        ],
+        description: 'A heavily weathered MS-06S Zaku II, featuring custom damage effects and realistic mechanical textures.'
+    },
+    'gp01': {
+        title: 'GP-01 Custom',
+        slug: 'gp01',
+        specs: {
+            series: 'RG Custom',
+            scale: '1/144',
+            buildTime: '80 Hours',
+            paintFinish: 'Clean Finish',
+        },
+        price: 450,
+        status: 'in_stock',
+        gallery: [
+            { image: { url: '/images/project_gp_custom.png', alt: 'GP-01' } },
+        ],
+        description: 'A refined RG GP-01fb with enhanced color separation and custom water-slide decals.'
     }
 }
 

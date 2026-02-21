@@ -56,8 +56,11 @@ export default function CollectionPage() {
                                 </div>
                             </div>
                         </div>
-                        <Link href={`/collection/${item.id}`} className="group/btn relative flex items-center justify-center w-full py-5 border border-white/10 text-[10px] font-black uppercase tracking-[0.4em] transition-all overflow-hidden hover:border-brand-accent">
+                        <Link href={`/collection/${item.id}`} className="group/btn relative flex items-center justify-center gap-3 w-full h-[60px] border border-white/10 text-[10px] font-black uppercase tracking-[0.4em] transition-all overflow-hidden hover:border-brand-accent">
                             <span className="relative z-10 transition-colors group-hover/btn:text-white">More Details</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="relative z-10 transition-transform group-hover/btn:translate-x-1 group-hover/btn:text-white">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
                             <div className="absolute inset-x-0 bottom-0 h-0 bg-[#7d5fff] transition-all duration-300 group-hover/btn:h-full -z-0" />
                         </Link>
                     </motion.div>

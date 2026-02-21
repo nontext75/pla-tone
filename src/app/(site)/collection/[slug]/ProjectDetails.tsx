@@ -69,14 +69,20 @@ export default function ProjectDetails({ project }: { project: any }) {
 
                             {/* Action Buttons */}
                             <div className="flex flex-col gap-4">
-                                <Link href="/checkout" className="group/btn relative flex items-center justify-center gap-4 py-6 border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.5em] overflow-hidden transition-all hover:border-brand-accent">
-                                    <span className="relative z-10 transition-colors group-hover/btn:text-white flex items-center gap-4">
+                                <Link href="/checkout" className="group/btn relative flex items-center justify-center gap-3 h-[60px] border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.5em] overflow-hidden transition-all hover:border-brand-accent">
+                                    <span className="relative z-10 transition-colors group-hover/btn:text-white flex items-center gap-3">
                                         <Zap size={14} className="fill-current" /> Instant Acquisition
                                     </span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="relative z-10 transition-transform group-hover/btn:translate-x-1 group-hover/btn:text-white">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
                                     <div className="absolute inset-x-0 bottom-0 h-0 bg-brand-accent transition-all duration-300 group-hover/btn:h-full -z-0" />
                                 </Link>
-                                <Link href="/contact" className="group/btn relative flex items-center justify-center gap-4 py-6 border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.5em] overflow-hidden transition-all hover:border-brand-accent">
+                                <Link href="/contact" className="group/btn relative flex items-center justify-center gap-3 h-[60px] border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.5em] overflow-hidden transition-all hover:border-brand-accent">
                                     <span className="relative z-10 transition-colors group-hover/btn:text-white">Request Custom Commission</span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="relative z-10 transition-transform group-hover/btn:translate-x-1 group-hover/btn:text-white">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
                                     <div className="absolute inset-x-0 bottom-0 h-0 bg-brand-accent transition-all duration-300 group-hover/btn:h-full -z-0" />
                                 </Link>
                             </div>
