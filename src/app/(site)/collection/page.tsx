@@ -56,12 +56,9 @@ export default function CollectionPage() {
                                 </div>
                             </div>
                         </div>
-                        <Link href={`/collection/${item.id}`} className="group/btn relative flex items-center justify-center w-full py-5 border border-white/10 text-[10px] font-black uppercase tracking-[0.4em] transition-all overflow-hidden hover:border-white">
-                            <span className="relative z-10">Explore Specs</span>
-                            <div className="absolute inset-x-0 bottom-0 h-0 group-hover/btn:h-full bg-white transition-all duration-300 -z-0" />
-                            <span className="absolute inset-0 flex items-center justify-center z-10 opacity-0 group-hover/btn:opacity-100 text-black transition-opacity duration-300">
-                                Explore Specs
-                            </span>
+                        <Link href={`/collection/${item.id}`} className="group/btn relative flex items-center justify-center w-full py-5 border border-white/10 text-[10px] font-black uppercase tracking-[0.4em] transition-all overflow-hidden hover:border-brand-accent">
+                            <span className="relative z-10 transition-colors group-hover/btn:text-white">More Details</span>
+                            <div className="absolute inset-x-0 bottom-0 h-0 bg-[#7d5fff] transition-all duration-300 group-hover/btn:h-full -z-0" />
                         </Link>
                     </motion.div>
                 ))}

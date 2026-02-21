@@ -69,12 +69,16 @@ export default function ProjectDetails({ project }: { project: any }) {
 
                             {/* Action Buttons */}
                             <div className="flex flex-col gap-4">
-                                <button className="flex items-center justify-center gap-4 py-6 bg-white text-black text-[10px] font-black uppercase tracking-[0.5em] hover:bg-[#7d5fff] hover:text-white transition-all group">
-                                    <Zap size={14} className="fill-current" /> Instant Acquisition
-                                </button>
-                                <button className="flex items-center justify-center gap-4 py-6 border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.5em] hover:border-[#7d5fff] hover:text-[#7d5fff] transition-all">
-                                    Request Custom Commission
-                                </button>
+                                <Link href="/checkout" className="group/btn relative flex items-center justify-center gap-4 py-6 border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.5em] overflow-hidden transition-all hover:border-brand-accent">
+                                    <span className="relative z-10 transition-colors group-hover/btn:text-white flex items-center gap-4">
+                                        <Zap size={14} className="fill-current" /> Instant Acquisition
+                                    </span>
+                                    <div className="absolute inset-x-0 bottom-0 h-0 bg-brand-accent transition-all duration-300 group-hover/btn:h-full -z-0" />
+                                </Link>
+                                <Link href="/contact" className="group/btn relative flex items-center justify-center gap-4 py-6 border border-white/10 text-white text-[10px] font-black uppercase tracking-[0.5em] overflow-hidden transition-all hover:border-brand-accent">
+                                    <span className="relative z-10 transition-colors group-hover/btn:text-white">Request Custom Commission</span>
+                                    <div className="absolute inset-x-0 bottom-0 h-0 bg-brand-accent transition-all duration-300 group-hover/btn:h-full -z-0" />
+                                </Link>
                             </div>
 
                             {/* Technical Tabs */}

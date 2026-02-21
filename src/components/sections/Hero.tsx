@@ -48,15 +48,10 @@ export default function Hero() {
                         <div className="pt-8">
                             <Link
                                 href="/collection"
-                                className="group relative inline-flex items-center gap-4 overflow-hidden border border-brand-secondary/20 bg-transparent px-8 py-4 text-[11px] font-black uppercase tracking-[0.3em] text-brand-secondary transition-all hover:bg-brand-secondary hover:text-brand-primary"
+                                className="group/btn relative inline-flex items-center justify-center overflow-hidden border border-brand-secondary/20 bg-transparent px-10 py-4 text-[11px] font-black uppercase tracking-[0.4em] text-brand-secondary transition-all hover:border-brand-accent h-[60px] min-w-[240px]"
                             >
-                                <span className="relative z-10">Enter Residency</span>
-                                <motion.div
-                                    className="absolute inset-0 -z-0 bg-brand-secondary"
-                                    initial={{ x: "-100%" }}
-                                    whileHover={{ x: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                />
+                                <span className="relative z-10 transition-colors group-hover/btn:text-white">More Details</span>
+                                <div className="absolute inset-x-0 bottom-0 h-0 bg-brand-accent transition-all duration-300 group-hover/btn:h-full -z-0" />
                             </Link>
                         </div>
                     </motion.div>
