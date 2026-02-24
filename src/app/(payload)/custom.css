@@ -1,122 +1,164 @@
-/* Carjoy Style Dark Theme Override */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* Master Design System - High Contrast Edition */
 :root {
-    /* Base Colors - Deep Dark Blue/Black */
-    --theme-bg-html: #0f1115;
-    /* Main Background */
-    --theme-bg-page: #0f1115;
-    --theme-elevation-0: #0f1115;
-    --theme-elevation-50: #15171c;
-    /* Sidebar / Cards */
-    --theme-elevation-100: #1a1d23;
-    --theme-elevation-150: #20232a;
-    --theme-elevation-200: #252830;
-    --theme-elevation-250: #2b2e36;
-    --theme-elevation-300: #30343d;
-    --theme-elevation-350: #363a44;
-    --theme-elevation-400: #3c404b;
-    --theme-elevation-450: #424652;
-    --theme-elevation-500: #484c59;
-    --theme-elevation-800: #ffffff;
-    /* Text inverse */
+    --theme-bg-html: #020617;
+    --theme-bg-page: #020617;
+    --theme-elevation-0: #020617;
+    --theme-elevation-50: #0f172a;
+    /* Sidebar & Card Base */
+    --theme-elevation-100: #1e293b;
+    /* Hover / Active */
+    --theme-elevation-150: #334155;
 
-    /* Text Colors */
-    --theme-text-primary: #ffffff;
-    --theme-text-secondary: #9ca3af;
-    /* Muted text */
-    --theme-text-tertiary: #6b7280;
+    --theme-text-primary: #f8fafc;
+    /* PURE WHITE vibe */
+    --theme-text-secondary: #e2e8f0;
+    --theme-text-tertiary: #94a3b8;
 
-    /* Brand Colors - Electric Blue & Red Accents */
-    --theme-success-500: #10b981;
-    /* Green */
-    --theme-error-500: #ef4444;
-    /* Red */
-    --theme-warning-500: #f59e0b;
-    /* Orange */
-    --theme-info-500: #3b82f6;
-    /* Blue */
-
-    /* Primary Action Color (Button) */
-    --theme-primary-500: #3b82f6;
-    /* Bright Blue */
-    --theme-primary-600: #2563eb;
-    --theme-primary-700: #1d4ed8;
-
-    /* Border Radius - Soft modern feel */
-    --theme-radius-sm: 6px;
-    --theme-radius-md: 10px;
-    --theme-radius-lg: 14px;
+    --theme-primary-500: #6366f1;
+    --theme-accent: #a855f7;
+    --admin-border: rgba(255, 255, 255, 0.12);
 }
 
-/* Global Overrides for Payload UI */
-body {
+/* Base Overrides */
+body,
+.payload-admin {
+    font-family: 'Outfit', sans-serif !important;
     background-color: var(--theme-bg-html) !important;
-    font-family: 'Inter', sans-serif !important;
+    color: var(--theme-text-primary) !important;
 }
 
-/* Sidebar styling */
+/* SIDEBAR - REINFORCED READABILITY */
 aside.nav {
-    background-color: var(--theme-elevation-50) !important;
-    border-right: 1px solid #1f2229 !important;
+    background: #020617 !important;
+    border-right: 1px solid var(--admin-border) !important;
+    padding: 1.5rem 0.75rem !important;
 }
 
-/* Card Styling */
-.card,
-.dist-card {
-    background-color: var(--theme-elevation-50) !important;
-    border: 1px solid #1f2229 !important;
-    border-radius: var(--theme-radius-lg) !important;
+.nav__group-title {
+    color: var(--admin-accent) !important;
+    font-size: 0.85rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    margin-top: 2.5rem !important;
+    margin-bottom: 0.75rem !important;
+    padding-left: 1rem !important;
+    opacity: 1 !important;
+    /* Ensure it's not faded */
 }
 
-/* Input Fields */
-input,
-textarea,
-select,
-.react-select__control {
-    background-color: #1a1d23 !important;
-    border: 1px solid #2d313a !important;
-    color: white !important;
-    border-radius: var(--theme-radius-md) !important;
+.nav__link {
+    border-radius: 12px !important;
+    margin: 0.4rem 0 !important;
+    padding: 0.9rem 1.25rem !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    color: #f1f5f9 !important;
+    /* Force high contrast white */
+    display: flex !important;
+    align-items: center !important;
+    font-weight: 500 !important;
 }
 
-/* Buttons - Primary */
+.nav__link:hover {
+    background: var(--theme-elevation-100) !important;
+    color: #fff !important;
+    transform: translateX(6px);
+}
+
+.nav__link--active {
+    background: rgba(99, 102, 241, 0.2) !important;
+    color: var(--theme-primary-500) !important;
+    font-weight: 700 !important;
+    box-shadow: inset 5px 0 0 var(--theme-primary-500) !important;
+}
+
+/* DASHBOARD GROUPS - THE "STRUCTURED" LOOK */
+.dashboard__group {
+    background: #0f172a !important;
+    /* Dark but elevated background for the block */
+    border: 1px solid var(--admin-border) !important;
+    border-radius: 20px !important;
+    padding: 2.5rem !important;
+    margin-bottom: 3.5rem !important;
+    box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.5) !important;
+    position: relative !important;
+}
+
+.dashboard__group-title {
+    position: absolute !important;
+    top: -15px !important;
+    left: 20px !important;
+    background: var(--theme-bg-html) !important;
+    padding: 0 1rem !important;
+    color: #fff !important;
+    font-size: 1.1rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    border: 1px solid var(--admin-border) !important;
+    border-radius: 50px !important;
+}
+
+/* CARDS WITHIN GROUPS */
+.card {
+    background: var(--theme-elevation-100) !important;
+    border: 1px solid var(--admin-border) !important;
+    border-radius: 16px !important;
+    padding: 1.75rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.card:hover {
+    background: var(--theme-elevation-150) !important;
+    border-color: var(--theme-primary-500) !important;
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* LIST VIEWS & TABLES */
+.collection-list__wrap,
+.list-controls {
+    background: transparent !important;
+}
+
+.table {
+    background: #0f172a !important;
+    border-radius: 18px !important;
+    border: 1px solid var(--admin-border) !important;
+    overflow: hidden !important;
+}
+
+.table th {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--theme-text-tertiary) !important;
+    padding: 1.25rem !important;
+    font-weight: 700 !important;
+}
+
+.table td {
+    border-bottom: 1px solid var(--admin-border) !important;
+    padding: 1.25rem !important;
+}
+
+/* BUTTONS */
 .btn--style-primary {
-    background-color: var(--theme-primary-500) !important;
-    border-radius: var(--theme-radius-md) !important;
-    font-weight: 600 !important;
-    transition: all 0.2s ease !important;
+    background: linear-gradient(135deg, var(--theme-primary-500), var(--admin-accent)) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 0.8rem 1.75rem !important;
+    font-weight: 700 !important;
+    box-shadow: 0 8px 16px -4px rgba(99, 102, 241, 0.5) !important;
 }
 
 .btn--style-primary:hover {
-    background-color: var(--theme-primary-600) !important;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 12px 24px -6px rgba(99, 102, 241, 0.6) !important;
 }
 
-/* Headers */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: white !important;
-    font-weight: 600 !important;
-}
-
-/* Force Nav Groups to stay open */
-.nav-group__content {
-    display: block !important;
-    height: auto !important;
-    opacity: 1 !important;
-}
-
-.nav-group__toggle {
-    cursor: default !important;
-    pointer-events: none !important;
-    /* Disable clicking */
-}
-
-.nav-group__indicator {
-    display: none !important;
-    /* Hide chevron */
+/* HEADER / TOPBAR */
+header.app-header {
+    background: #020617 !important;
+    border-bottom: 1px solid var(--admin-border) !important;
 }

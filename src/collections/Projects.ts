@@ -19,13 +19,28 @@ export const Projects: CollectionConfig = {
             index: true,
         },
         {
-            type: 'ui',
-            name: 'bulkUpload',
+            name: 'isFeatured',
+            type: 'checkbox',
+            label: 'Show on Main Gallery',
+            defaultValue: false,
             admin: {
-                components: {
-                    Field: '/components/payload/BulkUpload',
-                },
+                position: 'sidebar',
             },
+        },
+        {
+            name: 'mainImage',
+            type: 'upload',
+            relationTo: 'media',
+            required: true,
+        },
+        {
+            name: 'artist',
+            type: 'text',
+            defaultValue: 'NONTEXT',
+        },
+        {
+            name: 'year',
+            type: 'text',
         },
         {
             name: 'gallery',
@@ -48,6 +63,13 @@ export const Projects: CollectionConfig = {
             type: 'group',
             fields: [
                 {
+                    name: 'series',
+                    type: 'text',
+                    admin: {
+                        description: 'e.g. MG Ver.Ka'
+                    }
+                },
+                {
                     name: 'scale',
                     type: 'text',
                 },
@@ -58,10 +80,6 @@ export const Projects: CollectionConfig = {
                 {
                     name: 'paintFinish',
                     type: 'text',
-                },
-                {
-                    name: 'series',
-                    type: 'text', // e.g., MG Ver.Ka
                 },
             ],
         },

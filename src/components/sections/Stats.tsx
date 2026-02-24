@@ -1,20 +1,27 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import type { StatsGlobal, StatItem } from '@/types';
 
-const stats = [
+interface StatsProps {
+    data?: StatsGlobal;
+}
+
+const defaultStats: StatItem[] = [
     { label: 'Years Active', value: '04' },
     { label: 'Models Built', value: '142' },
     { label: 'Commissions', value: '89' },
     { label: 'Awards', value: '12' },
 ];
 
-export default function Stats() {
+export default function Stats({ data }: StatsProps) {
+    const statsItems: StatItem[] = data?.items ?? defaultStats;
+
     return (
         <section className="bg-brand-secondary py-24 text-brand-primary">
             <div className="architectural-grid">
                 <div className="col-span-12 grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-0">
-                    {stats.map((stat, i) => (
+                    {statsItems.map((stat: StatItem, i: number) => (
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 20 }}

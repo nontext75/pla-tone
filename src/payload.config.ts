@@ -8,9 +8,8 @@ import { Projects } from './collections/Projects'
 import { Media } from './collections/Media'
 import { Inquiries } from './collections/Inquiries'
 import { Hero } from './globals/Hero'
-import { Logo } from './components/Logo'
-import { Icon } from './components/Icon'
-import { ProjectIcon, MediaIcon, InquiryIcon, HeroIcon, UserIcon } from './components/NavIcons'
+import { Stats } from './globals/Stats'
+// Custom components are now referenced by path string
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -28,10 +27,11 @@ export default buildConfig({
         },
         components: {
             graphics: {
-                Logo: Logo,
-                Icon: Icon,
+                Logo: path.resolve(dirname, 'components/admin/Logo.tsx'),
+                Icon: path.resolve(dirname, 'components/admin/Logo.tsx'),
             },
         },
+        // Removing the incorrect 'css' property that caused a lint error
     },
     serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3004',
     cors: [process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3004'],
@@ -72,6 +72,12 @@ export default buildConfig({
             ...Hero,
             admin: {
                 ...Hero.admin,
+                group: 'Content',
+            },
+        },
+        {
+            ...Stats,
+            admin: {
                 group: 'Content',
             },
         },

@@ -1,12 +1,59 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { ChevronRight, ArrowLeft, ShieldCheck, Zap } from 'lucide-react';
+import { useState, memo } from 'react';
+import { ArrowLeft, Zap } from 'lucide-react';
 import Link from 'next/link';
+import type { Project, ProjectGalleryItem } from '@/types';
 
-export default function ProjectDetails({ project }: { project: any }) {
-    const [activeTab, setActiveTab] = useState('specs');
+interface ProjectDetailsProps {
+    project: Project;
+}
+
+const isImageObject = (image: unknown): image is { url: string; alt?: string } => {
+    return typeof image === 'object' && image !== null && 'url' in image;
+};
+
+const GalleryImage = memo(({ item, index, title }: { item: ProjectGalleryItem; index: number; title: string }) => {
+    if (!item.image) return null;
+    
+    const imageUrl = isImageObject(item.image) ? item.image.url : null;
+    const imageAlt = isImageObject(item.image) ? item.image.alt || title : title;
+    
+    if (!imageUrl) return null;
+
+    return (
+        <div className="w-full bg-white/5 border border-white/10 overflow-hidden group">
+            <img
+                src={imageUrl}
+                alt={imageAlt}
+                className="w-full h-auto object-cover grayscale transition-transform duration-700 group-hover:scale-105"
+                loading={index === 0 ? 'eager' : 'lazy'}
+            />
+            <div className="p-4 bg-black/50 backdrop-blur-sm border-t border-white/10">
+                <span className="text-[9px] font-black uppercase tracking-widest text-white/60">
+                    Fig. {String(index + 1).padStart(2, '0')}
+                </span>
+            </div>
+        </div>
+    );
+});
+
+GalleryImage.displayName = 'GalleryImage';
+
+export default function ProjectDetails({ project }: ProjectDetailsProps) {
+    const [activeTab, setActiveTab] = useState<'specs' | 'materials' | 'process'>('specs');
+
+    if (!project) {
+        return (
+            <main className="bg-brand-primary min-h-screen pt-32 pb-20 text-white flex items-center justify-center">
+                <div className="text-center">
+                    <h1 className="text-2xl font-black uppercase">Project Not Found</h1>
+                    <Link href="/collection" className="text-brand-accent mt-4 inline-block">← Back to Inventory</Link>
+                </div>
+            </main>
+        );
+    }
 
     return (
         <main className="bg-brand-primary min-h-screen pt-32 pb-20 text-white">
@@ -21,20 +68,15 @@ export default function ProjectDetails({ project }: { project: any }) {
             <div className="architectural-grid gap-16 lg:gap-24">
                 {/* Visual Gallery Segment - Long Scroll */}
                 <div className="col-span-12 lg:col-span-7 space-y-8">
-                    {project.gallery?.map((item: any, i: number) => (
-                        <div key={i} className="w-full bg-white/5 border border-white/10 overflow-hidden group">
-                            {item.image && typeof item.image !== 'string' && (
-                                <img
-                                    src={item.image.url}
-                                    alt={item.image.alt || project.title}
-                                    className="w-full h-auto object-cover grayscale transition-transform duration-700 group-hover:scale-105"
-                                />
-                            )}
-                            <div className="p-4 bg-black/50 backdrop-blur-sm border-t border-white/10">
-                                <span className="text-[9px] font-black uppercase tracking-widest text-white/60">Fig. {String(i + 1).padStart(2, '0')}</span>
-                            </div>
+                    {project.gallery && project.gallery.length > 0 ? (
+                        project.gallery.map((item, i) => (
+                            <GalleryImage key={i} item={item} index={i} title={project.title} />
+                        ))
+                    ) : (
+                        <div className="w-full bg-white/5 border border-white/10 p-12 text-center">
+                            <span className="text-white/40">No gallery images available</span>
                         </div>
-                    ))}
+                    )}
                 </div>
 
                 {/* Technical Specs & Action Center - Sticky */}
@@ -48,24 +90,28 @@ export default function ProjectDetails({ project }: { project: any }) {
                                 {project.title}
                             </h1>
                             <div className="flex items-center gap-6">
-                                {project.price && <span className="text-3xl font-sans font-black text-white">${project.price.toLocaleString()}</span>}
+                                {project.price !== undefined && (
+                                    <span className="text-3xl font-sans font-black text-white">
+                                        ${project.price.toLocaleString()}
+                                    </span>
+                                )}
                                 <span className="text-[10px] font-black border border-white/20 px-4 py-2 uppercase tracking-widest text-white/40">
-                                    {project.status === 'in_stock' ? 'In Stock' : project.status?.replace('_', ' ')}
+                                    {project.status === 'in_stock' ? 'In Stock' : project.status?.replace('_', ' ').toUpperCase() || 'UNAVAILABLE'}
                                 </span>
                             </div>
                         </div>
 
                         <div className="space-y-12">
-                            {/* Rich Text Description */}
+                            {/* Description */}
                             {project.description && (
-                                <div className="prose prose-invert prose-sm max-w-none text-white/60 leading-relaxed font-sans">
-                                    {/* Simplified rendering for now, or use a proper RichText parser */}
-                                    {/* In a real scenario, use @payloadcms/richtext-lexical/react */}
-                                    <div dangerouslySetInnerHTML={{ __html: JSON.stringify(project.description) }} />
-                                    {/* Note: Serializing Lexical JSON to HTML requires a parser. For now, showing placeholder or basic text if simple. */}
+                                <div className="text-white/60 leading-relaxed font-sans text-sm">
+                                    {typeof project.description === 'string' ? (
+                                        <p>{project.description}</p>
+                                    ) : (
+                                        <p>Premium Gundam model customization and artistry</p>
+                                    )}
                                 </div>
                             )}
-
 
                             {/* Action Buttons */}
                             <div className="flex flex-col gap-4">
@@ -90,7 +136,7 @@ export default function ProjectDetails({ project }: { project: any }) {
                             {/* Technical Tabs */}
                             <div>
                                 <div className="flex gap-10 border-b border-white/10 mb-8">
-                                    {['specs', 'materials', 'process'].map((tab) => (
+                                    {(['specs', 'materials', 'process'] as const).map((tab) => (
                                         <button
                                             key={tab}
                                             onClick={() => setActiveTab(tab)}
@@ -104,9 +150,18 @@ export default function ProjectDetails({ project }: { project: any }) {
                                 <div className="text-[11px] text-white/50 uppercase tracking-widest leading-relaxed">
                                     {activeTab === 'specs' && (
                                         <ul className="space-y-4">
-                                            <li className="flex justify-between border-b border-white/5 pb-2"><span>Scale</span> <span className="text-white">{project.specs?.scale || 'N/A'}</span></li>
-                                            <li className="flex justify-between border-b border-white/5 pb-2"><span>Total Build Time</span> <span className="text-white">{project.specs?.buildTime || 'N/A'}</span></li>
-                                            <li className="flex justify-between border-b border-white/5 pb-2"><span>Paint Finish</span> <span className="text-white">{project.specs?.paintFinish || 'N/A'}</span></li>
+                                            <li className="flex justify-between border-b border-white/5 pb-2">
+                                                <span>Scale</span>
+                                                <span className="text-white">{project.specs?.scale || 'N/A'}</span>
+                                            </li>
+                                            <li className="flex justify-between border-b border-white/5 pb-2">
+                                                <span>Total Build Time</span>
+                                                <span className="text-white">{project.specs?.buildTime || 'N/A'}</span>
+                                            </li>
+                                            <li className="flex justify-between border-b border-white/5 pb-2">
+                                                <span>Paint Finish</span>
+                                                <span className="text-white">{project.specs?.paintFinish || 'N/A'}</span>
+                                            </li>
                                         </ul>
                                     )}
                                     {activeTab === 'materials' && "Premium lacquers, metal thrusters, custom decal sets, and photo-etched components used throughout the frame."}

@@ -3,34 +3,9 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-const projects = [
-    {
-        id: 'rx-93',
-        title: 'RX-93 Nu Gundam',
-        category: 'Ver. Ka',
-        year: '2024',
-        artist: 'NONTEXT',
-        image: '/images/project_gp_custom.png'
-    },
-    {
-        id: 'sazabi',
-        title: 'MSN-04 Sazabi',
-        category: 'Ver. Ka',
-        year: '2023',
-        artist: 'NONTEXT',
-        image: '/images/project_mars.jpg'
-    },
-    {
-        id: 'unicorn',
-        title: 'RX-0 Unicorn',
-        category: 'PG Unleashed',
-        year: '2023',
-        artist: 'NONTEXT',
-        image: '/images/project_theo.png'
-    }
-];
+export default function VerticalGallery({ projects }: { projects: any[] }) {
+    if (!projects || projects.length === 0) return null;
 
-export default function VerticalGallery() {
     return (
         <section className="bg-brand-primary py-32 text-brand-secondary">
             <div className="architectural-grid mb-24">
@@ -39,7 +14,7 @@ export default function VerticalGallery() {
                         <span className="text-technical text-brand-accent">Archived Series</span>
                         <h2 className="font-sans font-black text-white text-[8vw] leading-[0.85] tracking-tighter uppercase">Latest</h2>
                     </div>
-                    <span className="text-metadata text-brand-secondary/60 mb-4 hidden md:block">Scroll to Explore / 001-003</span>
+                    <span className="text-metadata text-brand-secondary/60 mb-4 hidden md:block">Scroll to Explore / 001-00{projects.length}</span>
                 </div>
             </div>
 
@@ -64,7 +39,7 @@ export default function VerticalGallery() {
                             {/* Image Container */}
                             <div className="col-span-12 md:col-span-8 relative overflow-hidden aspect-[16/9] md:aspect-[21/9] border border-white/5">
                                 <motion.img
-                                    src={project.image}
+                                    src={typeof project.mainImage === 'object' ? project.mainImage.url : project.mainImage}
                                     alt={project.title}
                                     whileHover={{ scale: 1.05 }}
                                     transition={{ duration: 0.7 }}
@@ -75,7 +50,7 @@ export default function VerticalGallery() {
                                 {/* Image Overlay Info */}
                                 <div className="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                                     <span className="text-technical text-white border border-white/20 px-3 py-1 backdrop-blur-sm">
-                                        Specs: Custom Painted / High-Detail
+                                        Specs: {project.specs?.paintFinish || 'Custom Painted'} / High-Detail
                                     </span>
                                 </div>
                             </div>
@@ -86,30 +61,30 @@ export default function VerticalGallery() {
                                     <div>
                                         <div className="flex items-center gap-3 mb-2">
                                             <span className="h-[2px] w-8 bg-brand-accent"></span>
-                                            <span className="text-xs font-black text-white tracking-[0.2em] uppercase">{project.category}</span>
+                                            <span className="text-xs font-black text-white tracking-[0.2em] uppercase">{project.specs?.series || 'Custom Build'}</span>
                                         </div>
                                         <h3 className="font-sans font-bold text-4xl md:text-5xl text-white tracking-tight group-hover:text-brand-accent transition-colors">
                                             {project.title}
                                         </h3>
                                         <span className="text-[9px] font-mono text-brand-accent/60 mt-1 block uppercase tracking-[0.3em]">
-                                            BY {project.artist}
+                                            BY {project.artist || 'NONTEXT'}
                                         </span>
                                     </div>
 
                                     <div className="grid grid-cols-2 gap-4 pb-8 border-b border-white/10">
                                         <div>
                                             <span className="text-[9px] uppercase tracking-widest text-brand-secondary/40 block mb-1">Scale</span>
-                                            <span className="text-xs font-mono text-brand-secondary/80">1/100 MASTER GRADE</span>
+                                            <span className="text-xs font-mono text-brand-secondary/80">{project.specs?.scale || '1/100'}</span>
                                         </div>
                                         <div>
                                             <span className="text-[9px] uppercase tracking-widest text-brand-secondary/40 block mb-1">Year</span>
-                                            <span className="text-xs font-mono text-brand-secondary/80">{project.year}</span>
+                                            <span className="text-xs font-mono text-brand-secondary/80">{project.year || '2024'}</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="mt-8">
-                                    <Link href={`/collection/${project.id}`} className="group/btn relative flex items-center justify-center gap-3 overflow-hidden border border-brand-secondary/20 px-8 h-[60px] text-[10px] font-black uppercase tracking-[0.4em] text-brand-secondary transition-all hover:border-brand-accent">
+                                    <Link href={`/collection/${project.slug}`} className="group/btn relative flex items-center justify-center gap-3 overflow-hidden border border-brand-secondary/20 px-8 h-[60px] text-[10px] font-black uppercase tracking-[0.4em] text-brand-secondary transition-all hover:border-brand-accent">
                                         <span className="relative z-10 transition-colors group-hover/btn:text-white">More Details</span>
                                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="relative z-10 transition-transform group-hover/btn:translate-x-1 group-hover/btn:text-white">
                                             <path d="M5 12h14M12 5l7 7-7 7" />

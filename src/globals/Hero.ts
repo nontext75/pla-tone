@@ -20,14 +20,14 @@ export const Hero: GlobalConfig = {
             type: 'relationship',
             relationTo: 'projects',
             admin: {
-                condition: (data: any) => data?.type === 'project',
+                condition: (data: Record<string, unknown>) => data?.type === 'project',
             },
         },
         {
             name: 'customContent',
             type: 'group',
             admin: {
-                condition: (data: any) => data?.type === 'custom',
+                condition: (data: Record<string, unknown>) => data?.type === 'custom',
             },
             fields: [
                 {
